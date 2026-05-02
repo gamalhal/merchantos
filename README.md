@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MerchantOS
+
+MerchantOS is a responsive Next.js merchant dashboard UI for enterprise commerce hardware, secure checkout, inventory product details, cart management, and account login.
+
+## Features
+
+- Responsive navbar with mobile dropdown navigation.
+- Account/avatar link connected to the login page.
+- Cart icon with a live badge count stored in `localStorage`.
+- Home page with hero, inventory cards, and CTA section.
+- Dashboard overview with stats, revenue chart, growth panel, and transactions table.
+- Payments checkout page using MerchantOS cart data.
+- Inventory product detail page using shared product data.
+- Cart page with order summary, promo code UI, and checkout link.
+- Login page with secure sign-in and two-factor verification UI.
+- Shared footer across all pages.
+
+## Routes
+
+| Route | Page |
+| --- | --- |
+| `/` | Home page |
+| `/dashboard` | Dashboard overview |
+| `/payments` | Secure checkout |
+| `/inventory` | Product detail |
+| `/cart` | Shopping cart |
+| `/login` | Login and two-factor screen |
+| `/customers` | Customers placeholder |
+| `/analytics` | Analytics placeholder |
+
+## Tech Stack
+
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS
+- Lucide React icons
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
 
-## Learn More
+```bash
+npm run dev
+npm run lint
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Important Files
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+src/app/page.tsx                    Home page
+src/app/dashboard/page.tsx          Dashboard overview
+src/app/payments/page.tsx           Checkout page
+src/app/inventory/page.tsx          Product detail page
+src/app/inventory/inventory-list.tsx Home inventory cards
+src/app/cart/page.tsx               Cart page
+src/app/cart/add-to-cart-button.tsx  Add-to-cart client behavior
+src/app/login/page.tsx              Login and 2FA page
+src/app/navbar/navbar.tsx           Navbar, cart badge, mobile menu
+src/app/footer/footer.tsx           Shared footer
+src/app/data.ts                     Shared product and cart data
+src/app/globals.css                 Global styles and input helpers
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Product and cart data currently live in `src/app/data.ts`. The add-to-cart badge is a frontend-only interaction and stores its count in the browser using `localStorage`.
