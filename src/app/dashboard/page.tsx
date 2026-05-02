@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Dashboard() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-8">
+    <section className="mx-auto max-w-7xl px-6 py-8">
       <div className="grid gap-6 xl:grid-cols-[1.8fr_1fr]">
         {/* البطاقة الرئيسية */}
         <div className="relative overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-2xl">
