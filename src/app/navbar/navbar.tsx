@@ -74,7 +74,7 @@ export default function Navbar() {
 
         <button className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
           <div className="relative h-9 w-9 overflow-hidden rounded-full bg-slate-200">
-            <Image src="/avatar-placeholder.jpg" alt="Account" fill className="object-cover" />
+            <Image src="/man.png" alt="Account" fill className="object-cover" />
           </div>
           <span className="hidden sm:inline">Account</span>
         </button>
