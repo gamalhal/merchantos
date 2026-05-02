@@ -2,6 +2,10 @@
 
 MerchantOS is a responsive Next.js merchant dashboard UI for enterprise commerce hardware, secure checkout, inventory product details, cart management, and account login.
 
+## Live Demo
+
+https://merchantos-gamalhal.netlify.app/
+
 ## Features
 
 - Responsive navbar with mobile dropdown navigation.
