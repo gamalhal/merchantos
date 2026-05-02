@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Inventory() {
   return (
     <main className="min-h-screen bg-slate-50 px-6 py-8">
@@ -31,28 +33,32 @@ function InventorySection() {
       category: "Terminals",
       price: "$899.00",
       tag: "In Stock",
-      image: "/products/terminal.jpg",
+      image:
+        "/terminals.jpg",
     },
     {
       title: "Pocket Reader Go",
       category: "Handheld",
       price: "$149.00",
       tag: "Ships Tomorrow",
-      image: "/products/pocket-reader.jpg",
+      image:
+        "/hero-bg.jpg",
     },
     {
       title: "Cloud Thermal Printer",
       category: "Peripherals",
       price: "$299.00",
       tag: "",
-      image: "/products/printer.jpg",
+      image:
+        "/Cloud Thermal Printer.jpg",
     },
     {
       title: "Ultra-Range Scanner",
       category: "Accessories",
       price: "$189.00",
       tag: "",
-      image: "/products/scanner.jpg",
+      image:
+        "/lUltra-Range Scanner.jpg",
     },
   ];
 
@@ -85,10 +91,11 @@ function InventorySection() {
             className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-50 transition hover:-translate-y-1 hover:shadow-xl"
           >
             <div className="relative h-56 overflow-hidden bg-slate-100">
-              <img
+                <Image
                 src={product.image}
                 alt={product.title}
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                fill
+                className="object-cover transition duration-500 group-hover:scale-105"
               />
               {product.tag ? (
                 <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800 shadow-sm">
