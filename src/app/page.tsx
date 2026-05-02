@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import InventorySection from "./inventory/page";
+import InventoryList from "./inventory/inventory-list";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50">
       <HomeHero />
-      <InventorySection />
+      <section className="mx-auto max-w-7xl px-6 pb-8">
+        <InventoryList />
+      </section>
       <section className="mx-auto max-w-7xl px-6 pb-8">
         <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-[0_24px_60px_rgba(15,23,42,0.06)] sm:p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">

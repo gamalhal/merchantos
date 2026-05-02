@@ -10,6 +10,11 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // صفحة تسجيل الدخول لها شاشة مستقلة مثل بوابات الدخول الآمنة، لذلك نخفي شريط التنقل فيها فقط.
+  if (pathname === '/login') {
+    return null;
+  }
+
   // روابط التنقل الحقيقية في التطبيق
   const navLinks = [
     { name: 'Dashboard', href: '/dashboard' },

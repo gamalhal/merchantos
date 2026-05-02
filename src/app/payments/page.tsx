@@ -9,21 +9,9 @@ import {
   Shield,
   ShieldCheck,
 } from "lucide-react";
+import { cartItems } from "../data";
 
-const orderItems = [
-  {
-    name: "Precision Keyboard Pro",
-    quantity: 1,
-    price: "$189.00",
-    image: "/Cloud Thermal Printer.jpg",
-  },
-  {
-    name: "ErgoMotion Wireless Mouse",
-    quantity: 1,
-    price: "$89.00",
-    image: "/hero-bg.jpg",
-  },
-];
+const orderItems = cartItems.slice(0, 2);
 
 export default function Payments() {
   return (
