@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { inventoryTabs, products } from "../data";
+import AddToCartButton from "../cart/add-to-cart-button";
 
 export default function InventoryList() {
   return (
@@ -62,9 +63,9 @@ export default function InventoryList() {
                 <p className="text-lg font-semibold text-slate-900">
                   {product.price}
                 </p>
-                <button className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white transition hover:bg-blue-500">
+                <AddToCartButton className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white transition hover:bg-blue-500">
                   +
-                </button>
+                </AddToCartButton>
               </div>
             </div>
           </article>

@@ -2,13 +2,40 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { usePathname } from 'next/navigation';
-import { Search, Bell, Settings, Menu, X } from 'lucide-react';
+import { Search, Bell, Settings, Menu, X, ShoppingCart } from 'lucide-react';
+
+const cartStorageKey = 'merchantos-cart-count';
+const cartUpdatedEvent = 'merchantos-cart-updated';
+
+function subscribeToCartUpdates(onStoreChange: () => void) {
+  // الناف بار يشترك في حدث السلة المخصص حتى يحدث badge فور الضغط على زر إضافة منتج.
+  window.addEventListener(cartUpdatedEvent, onStoreChange);
+  window.addEventListener('storage', onStoreChange);
+
+  return () => {
+    window.removeEventListener(cartUpdatedEvent, onStoreChange);
+    window.removeEventListener('storage', onStoreChange);
+  };
+}
+
+function getCartCountSnapshot() {
+  return Number(localStorage.getItem(cartStorageKey) ?? '0');
+}
+
+function getServerCartCountSnapshot() {
+  return 0;
+}
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cartCount = useSyncExternalStore(
+    subscribeToCartUpdates,
+    getCartCountSnapshot,
+    getServerCartCountSnapshot
+  );
 
   // صفحة تسجيل الدخول لها شاشة مستقلة مثل بوابات الدخول الآمنة، لذلك نخفي شريط التنقل فيها فقط.
   if (pathname === '/login') {
@@ -22,6 +49,7 @@ export default function Navbar() {
     { name: 'Inventory', href: '/inventory' },
     { name: 'Customers', href: '/customers' },
     { name: 'Analytics', href: '/analytics' },
+    { name: 'Login', href: '/login' },
   ];
 
   return (
@@ -88,14 +116,30 @@ export default function Navbar() {
             <Settings className="h-5 w-5" />
           </button>
 
+          <Link
+            href="/cart"
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full bg-slate-50 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+            aria-label="Shopping cart"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            {cartCount > 0 ? (
+              <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-blue-600 px-1 text-xs font-bold text-white ring-2 ring-white">
+                {cartCount}
+              </span>
+            ) : null}
+          </Link>
+
           <div className="hidden h-7 w-px bg-slate-200 sm:block" />
 
-          <button className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-2 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 sm:px-3">
+          <Link
+            href="/login"
+            className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-2 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 sm:px-3"
+          >
             <div className="relative h-9 w-9 overflow-hidden rounded-full bg-slate-200">
               <Image src="/man.png" alt="Account" fill className="object-cover" />
             </div>
             <span className="hidden sm:inline">Account</span>
-          </button>
+          </Link>
         </div>
       </div>
 

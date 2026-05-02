@@ -11,6 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import { products } from "../data";
+import AddToCartButton from "../cart/add-to-cart-button";
 
 const selectedProduct = products[0];
 
@@ -140,13 +141,10 @@ function ProductHero() {
         </div>
 
         <div className="mt-7 grid gap-3 sm:grid-cols-2">
-          <Link
-            href="/cart"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-4 text-sm font-semibold text-white transition hover:bg-blue-500"
-          >
+          <AddToCartButton className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-4 text-sm font-semibold text-white transition hover:bg-blue-500">
             <ShoppingCart className="h-5 w-5" />
             Add to Procurement
-          </Link>
+          </AddToCartButton>
           <Link
             href="/customers"
             className="inline-flex items-center justify-center rounded-lg border border-blue-600 px-5 py-4 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
