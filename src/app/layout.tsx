@@ -1,25 +1,14 @@
 
 import "./globals.css";
+import Navbar from './navbar/navbar';
 
-import Link from 'next/link'
- 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <body>
-        <nav>
-          {/* Prefetched when the link is hovered or enters the viewport */}
-          
-           <Link href="/dashboard">Dashboard</Link>
-            <Link href="/payments">Payment</Link>
-            <Link href="/inventory">Inventory</Link>
-            <Link href="/customers">Customers</Link>
-            <Link href="/analytics">Analytics</Link>
-          {/* No prefetching */}
-          <a href="/contact">Contact</a>
-        </nav>
+    <html lang="en">
+      <body className="min-h-screen bg-slate-50 text-slate-900">
+        <Navbar />
         {children}
       </body>
     </html>
-  )
+  );
 }
